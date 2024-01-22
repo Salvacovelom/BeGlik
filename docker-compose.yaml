@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  database:
+    # Official Postgres image from DockerHub
+    image: postgres:12.9
+    # We expose the port 5439 to the outside world
+    ports:
+      - ${POSTGRES_PORT}:5432
+    # POSTGRES_PASSWORD, POSTGRES_USER and POSTGRES_DB are environment variables used by the official Postgres image
+    env_file:
+      - .env
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    networks:
+      - postgres
+
+  web:
+    build: .
+    # command: python manage.py runserver 0.0.0.0:8000
+    entrypoint: [ "./entrypoint.sh" ]
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - database
+    networks:
+      - postgres
+
+  pg_admin:
+    restart: "always"
+    image: "dpage/pgadmin4:7.3"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@email.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 5050:80
+    depends_on:
+      - database
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
