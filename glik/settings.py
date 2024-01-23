@@ -39,6 +39,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "10.0.1.0/28",
+    "127.0.0.1",
     os.environ.get("BACKEND_STAGING_URL"),
     os.environ.get("BACKEND_PRODUCTION_URL"),
 ]

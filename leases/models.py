@@ -39,6 +39,7 @@ class Lease(models.Model):
   initial_fee = models.PositiveBigIntegerField()
   monthly_fee = models.PositiveBigIntegerField()
   fees_number = models.IntegerField()
+  weekly_income = models.IntegerField()
   lease_reason = models.CharField(max_length=100)
   # Fields as @properties
   # next_payment_date = models.DateTimeField(null=True)

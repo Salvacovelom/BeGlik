@@ -52,6 +52,7 @@ class LeaseAllView(APIView):
     #   raise CustomException(message=errorMessage, status_code=status.HTTP_400_BAD_REQUEST)
 
     data = request.data.copy()
+    print(data)
     # get user id from request
     data['lease']['user'] = request.user.id
     data['lease']['status'] = LEASES_STATUS.PENDING_APPROVAL.value

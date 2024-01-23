@@ -39,7 +39,8 @@ class LeaseSerializer(serializers.ModelSerializer):
       'lease_reason',
       'payments',
       'next_payment_date',
-      'type'
+      'type',
+      'weekly_income'
     ]
     depth = 3
 

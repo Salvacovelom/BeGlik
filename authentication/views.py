@@ -79,10 +79,18 @@ class ForgotPasswordView(APIView):
 
 class LoginView(ObtainAuthToken):
   def post(self, request, *args, **kwargs):
+    print(request.data['password'])
     security_service = Security_service()
+    print(request.data['password'])
     request.data['password'] = security_service.encrypt(request.data['password'])
+    print(request.data['password'])
+
     serializer = self.serializer_class(data=request.data, context={'request': request})
+    print(request)
     serializer.is_valid(raise_exception=True)
+    print(request.data['password'])
     user = serializer.validated_data['user']
+    print(request.data['password'])
     token, created = Token.objects.get_or_create(user=user)
-    return get_successful_response( data={'token': token.key}, message="Login successful")
+    print(request.data['password'])
+    return get_successful_response(data={'token': token.key}, message="Login successful")

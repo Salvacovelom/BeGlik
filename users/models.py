@@ -48,7 +48,7 @@ class User(AbstractUser):
     def __str__(self):
         return self.username + " | " + self.get_full_name() 
     
-    def set_password(self, raw_password: str | None) -> None:
+    def set_password(self, raw_password: str ) -> None:
         security_service = Security_service()
         return super().set_password(security_service.encrypt(raw_password))
 
