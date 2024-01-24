@@ -188,14 +188,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#auth-custom-user
 AUTH_USER_MODEL = 'users.User'
 
-CORS_ALLOWED_ORIGINS = [
-    os.environ.get("ADMIN_BASE_URL"),
-    os.environ.get("WEB_BASE_URL"),
-]
+#CORS_ALLOWED_ORIGINS = [
+#    os.environ.get("ADMIN_BASE_URL"),
+#    os.environ.get("WEB_BASE_URL"),
+#    "*"
+#]
 
-if os.environ.get("ENVIROMENT") == ENVIRONMENT_NAMES.CI.value:
-    CORS_ALLOWED_ORIGINS.append("http://localhost:3001")
-    CORS_ALLOWED_ORIGINS.append("http://localhost:3000")
+#if os.environ.get("ENVIROMENT") == ENVIRONMENT_NAMES.CI.value:
+#    CORS_ALLOWED_ORIGINS.append("http://localhost:3001")
+#    CORS_ALLOWED_ORIGINS.append("http://localhost:3000")
 
 ADMIN_ENABLED = False
 

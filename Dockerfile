@@ -28,5 +28,7 @@ COPY . /app/
 EXPOSE 8000
 EXPOSE 8080
 
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 # Set entrypoint.sh as the entrypoint
 ENTRYPOINT ["/app/entrypoint.sh"]
