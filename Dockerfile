@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     gettext \
     && apt-get -y clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/
 
 # Create and set the working directory
 RUN mkdir /app
@@ -26,6 +26,7 @@ COPY . /app/
 
 # Expose the port Gunicorn will run on
 EXPOSE 8000
+EXPOSE 8080
 
 # Set entrypoint.sh as the entrypoint
 ENTRYPOINT ["/app/entrypoint.sh"]
